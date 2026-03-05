@@ -2,3 +2,4 @@ __pycache__/
 *.pyc
 data
 pets_env/
+results_artifact/
