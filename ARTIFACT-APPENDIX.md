@@ -30,6 +30,8 @@ The repository contains:
 -   requirements.txt
 -   License file
 
+The artifact is not behind a paywall and does not require manual
+approval for access.
 
 ## License
 
@@ -71,7 +73,7 @@ All instructions have been tested in a clean environment.
 The CIFAR-10 experimental pipeline described in the paper is fully
 represented:
 
-1.  Dataset loading
+1.  Dataset loading (deterministic splits)
 2.  Target model loading
 3.  Shadow model loading
 4.  LiRA shadow model loading
@@ -91,14 +93,16 @@ The entire artifact can be executed with a single command:
 
     python reproduce_all.py
 
+
 This script:
 
--   Runs HAMP
--   Runs DynaNoise
--   Executes all attacks
--   Computes MIDPUT
--   Writes results to CSV
--   Prints runtime summary
+- Evaluates the baseline target model (no defense)
+- Runs the HAMP defense
+- Runs the DynaNoise defense
+- Executes all membership inference attacks
+- Computes the MIDPUT privacy–utility metric
+- Writes results to CSV files
+- Prints a runtime summary
 
 No manual intervention is required.
 
@@ -148,24 +152,23 @@ directly to the reported CIFAR-10 results in the paper.
 -   All attacks executed automatically
 -   No retraining required
 
-Exact numerical values may vary slightly due to differences in hardware,
-CUDA versions, and PyTorch implementations. The artifact enforces
-deterministic dataset splits and fixed random seeds to minimize
-randomness, but minor numerical variations may still occur across
-systems. Nevertheless, the qualitative conclusions of the paper should
-remain unchanged (e.g., DynaNoise achieves higher MIDPUT than HAMP
-while preserving higher model accuracy).
+Exact numerical values may vary slightly due to differences in
+hardware, CUDA versions, and PyTorch implementations. The artifact
+uses deterministic dataset splits and fixed random seeds to minimize
+randomness, but minor numerical variations across systems may still
+occur. The qualitative conclusions reported in the paper remain
+consistent (e.g., DynaNoise achieves higher MIDPUT than HAMP while
+maintaining higher model accuracy).
 
 ------------------------------------------------------------------------
 
 # 4. Limitations
 
-- The artifact reproduces the CIFAR-10 experiments only.
-- ImageNet-10 and SST-2 experiments reported in the paper are not included
-  due to computational constraints during artifact evaluation.
-- These datasets follow the same experimental pipeline implemented in the
-  artifact.
-- GPU execution is recommended for timely completion of the experiments.
+-   ImageNet-10 and SST-2 experiments are not included due to resource
+    constraints.
+-   The artifact focuses on CIFAR-10 only.
+-   GPU recommended for timely execution.
+
 ------------------------------------------------------------------------
 
 # 5. Reusability
