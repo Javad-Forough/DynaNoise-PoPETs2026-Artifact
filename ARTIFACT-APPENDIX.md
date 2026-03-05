@@ -244,11 +244,7 @@ to the CIFAR-10 experimental results reported in the paper.
 
 The artifact reproduces **CIFAR-10 experiments only**.
 
-ImageNet-10 and SST-2 experiments reported in the paper are not included
-due to computational constraints during artifact evaluation.
-
-These datasets follow the same experimental pipeline implemented in the
-artifact.
+ImageNet-10 and SST-2 experiments reported in the paper are not included in the artifact due to computational constraints during artifact evaluation. The CIFAR-10 configuration provided here exercises the complete experimental pipeline (target model evaluation, attacks, defenses, and MIDPUT computation). The other datasets follow the same pipeline implemented in the artifact.
 
 GPU execution is recommended for timely experiment completion.
 
