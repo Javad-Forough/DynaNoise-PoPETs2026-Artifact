@@ -58,7 +58,7 @@ def get_fixed_cifar_loader(
     shuffle: bool = True,
 ) -> DataLoader:
     tfms = []
-    if model_name.lower() in ["alexnet", "resnet18", "vgg16_bn"]:
+    if model_name.lower() == "alexnet":
         tfms.append(transforms.Resize(224))
     tfms += [
         transforms.ToTensor(),
@@ -621,7 +621,7 @@ def main():
     p = argparse.ArgumentParser("Artifact runner (CIFAR-10 only; defenses: none/dyna/hamp).")
 
     p.add_argument("--dataset", default="cifar10", choices=["cifar10"])
-    p.add_argument("--model", default="alexnet", choices=["alexnet", "resnet18", "vgg16_bn"])
+    p.add_argument("--model", default="alexnet", choices=["alexnet"])
     p.add_argument("--defense", required=True, choices=["none", "dyna", "hamp"])
     p.add_argument("--attack", required=True, choices=["conf", "loss", "shadow", "lira", "entropy", "mentropy", "all"])
 

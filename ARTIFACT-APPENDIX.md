@@ -33,6 +33,13 @@ Specifically, the artifact enables reproduction of:
 
 All experiments are automated through a single reproduction script.
 
+To keep the artifact practical for evaluation, the packaged
+configuration focuses on the CIFAR-10 setting and the defense
+configurations needed for the paper's main comparison: the undefended
+target model, HAMP, and DynaNoise. Additional datasets and baselines
+from the full paper were omitted from the artifact package to limit
+checkpoint size, runtime, and environment complexity.
+
 ### Security/Privacy Issues and Ethical Concerns
 
 The artifact does not execute malicious code and does not modify system
@@ -182,6 +189,15 @@ bash package_artifact.sh
 
 Create a Python environment:
 
+Conda option:
+
+``` bash
+conda env create -f environment.yml
+conda activate dynanoise-artifact
+```
+
+Manual virtual environment option:
+
 ``` bash
 python -m venv pets_env
 source pets_env/bin/activate
@@ -191,8 +207,12 @@ pip install --upgrade pip
 Install PyTorch (example CUDA version):
 
 ``` bash
-pip install torch torchvision --index-url https://download.pytorch.org/whl/cu124
+pip install torch==2.6.0 torchvision==0.21.0 --index-url https://download.pytorch.org/whl/cu124
 ```
+
+The tested versions are `torch==2.6.0` and `torchvision==0.21.0`. For
+CPU-only execution, install the same pinned versions without the CUDA
+index override.
 
 Install remaining dependencies:
 

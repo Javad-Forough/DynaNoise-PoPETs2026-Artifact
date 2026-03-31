@@ -44,6 +44,12 @@ complete experimental pipeline (target model evaluation, attacks,
 defenses, and MIDPUT computation). The other datasets follow the same
 pipeline implemented in the artifact.
 
+The artifact also focuses on the two defense settings needed to
+reproduce the paper's core comparison on CIFAR-10: the undefended target
+model, HAMP, and DynaNoise. Additional baselines from the full paper are
+not included in this package in order to keep checkpoint size, runtime,
+and dependency complexity within a practical artifact-evaluation budget.
+
 ------------------------------------------------------------------------
 
 # 2. System Requirements
@@ -100,6 +106,15 @@ bash fetch_checkpoints.sh
 We recommend creating a clean Python environment after the checkpoints
 have been materialized.
 
+If you use Conda, the tested environment can be created directly via:
+
+``` bash
+conda env create -f environment.yml
+conda activate dynanoise-artifact
+```
+
+Or create a virtual environment manually:
+
 ``` bash
 python -m venv pets_env
 source pets_env/bin/activate
@@ -108,18 +123,23 @@ pip install --upgrade pip
 
 ## Step 1 --- Install PyTorch
 
-Install PyTorch (CPU or GPU build) from https://pytorch.org.
+The artifact was tested with:
+
+-   `torch==2.6.0`
+-   `torchvision==0.21.0`
+
+Install exactly these versions.
 
 Example for CUDA 12.4:
 
 ``` bash
-pip install torch torchvision --index-url https://download.pytorch.org/whl/cu124
+pip install torch==2.6.0 torchvision==0.21.0 --index-url https://download.pytorch.org/whl/cu124
 ```
 
 If using CPU only:
 
 ``` bash
-pip install torch torchvision
+pip install torch==2.6.0 torchvision==0.21.0
 ```
 
 ## Step 2 --- Install Remaining Dependencies
