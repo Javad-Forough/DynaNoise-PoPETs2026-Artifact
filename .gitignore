@@ -3,3 +3,4 @@ __pycache__/
 data
 pets_env/
 results_artifact/
+timing_summary.txt
