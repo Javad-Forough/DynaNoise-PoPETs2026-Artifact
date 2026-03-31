@@ -180,13 +180,6 @@ file saved_models/alexnet_cifar10_target.pt
 If `file` reports `ASCII text`, the checkpoint is still a Git LFS
 pointer and the artifact is not ready to run.
 
-To create a reviewer-ready bundled archive containing the actual
-checkpoint files, run:
-
-``` bash
-bash package_artifact.sh
-```
-
 Create a Python environment:
 
 Conda option:

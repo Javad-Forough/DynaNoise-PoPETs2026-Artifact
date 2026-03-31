@@ -193,17 +193,6 @@ file saved_models/alexnet_cifar10_target.pt
 If the output says `ASCII text`, then the file is still a Git LFS
 pointer and the checkpoints were not downloaded correctly.
 
-For Artifact Evaluation packaging, after the checkpoints are present you
-can create a reviewer-ready archive that bundles the actual checkpoint
-files:
-
-``` bash
-bash package_artifact.sh
-```
-
-This generates a `.tar.gz` bundle that can be shared without requiring
-Git LFS at extraction time.
-
 
 ------------------------------------------------------------------------
 
@@ -276,7 +265,7 @@ The artifact enforces:
 -   Fixed random seeds
 -   Deterministic dataset splits
 -   Stable split hash
--   Pretrained checkpoints obtained via Git LFS or packaged bundle
+-   Pretrained checkpoints obtained via Git LFS
 
 
 ------------------------------------------------------------------------
